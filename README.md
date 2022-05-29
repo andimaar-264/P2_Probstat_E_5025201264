@@ -57,3 +57,43 @@ H1 : miu > 20000
 ![2cc](https://user-images.githubusercontent.com/80830860/170877792-d187e78b-3814-4f9b-a42a-db6ae851974e.png)
 
 dari nilai z yang dihasilkan serta p-value yang didapat, dapat disimpulkan bahwa jarak yang ditempuh mobil rata-rata merupakan 20000 km per tahun. 
+
+5a. Buatlah plot sederhana untuk visualisasi data
+
+```
+qplot(x = Temp, y = Light, geom = "point", data = GTL) + facet_grid(.~Glass, labeller = label_both)
+```
+
+5b. Lakukan uji ANOVA dua arah
+
+```
+GTL$Glass <- as.factor(GTL$Glass)
+GTL$Temp_Factor <- as.factor(GTL$Temp)
+str(GTL)
+
+anova <- aov(Light ~ Glass*Temp_Factor, data = GTL)
+summary(anova)
+```
+
+5c. Tampilkan tabel dengan mean dan standar deviasi keluaran cahaya untuk setiap perlakuan (kombinasi kaca pelat muka dan suhu operasi)
+
+```
+data_summary <- group_by(GTL, Glass, Temp) %>%
+  summarise(mean-mean(Light), sd-sd(Light)) %>%
+  arrange(desc(mean))
+print(data_summary)
+```
+
+5d. Lakukan uji Tukey
+
+```
+tukey <- TukeyH5D(anova)
+print(tukey)
+```
+
+5e. Gunakan compact letter display untuk menunjukkan perbedaan signifikan antara uji Anova dan uji Tukey
+
+```
+tukey.cld <- multcompLetters4(anova, tukey)
+print(tukey.cld)
+```
