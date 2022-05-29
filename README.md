@@ -22,11 +22,15 @@ sd_after <- sd(after)
 sd_after
 ```
 
+![image](https://user-images.githubusercontent.com/80830860/170878444-d2197d19-3d44-4591-a09d-269c0928a556.png)
+
 1b. carilah nilai t (p-value)
 
 ```
 t.test(before, after, alternative = "greater", var.equal = FALSE)
 ```
+
+![image](https://user-images.githubusercontent.com/80830860/170878472-c0ebc2e8-43df-4e3e-89ee-6c2768ab4437.png)
 
 1c. tentukanlah apakah terdapat pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen , sebelum dan sesudah melakukan aktivitas 𝐴 jika diketahui tingkat signifikansi 𝛼 = 5% serta H0 : “tidak ada pengaruh yang signifikan secara statistika dalam hal kadar saturasi oksigen , sebelum dan sesudah melakukan aktivitas 𝐴”
 
@@ -34,6 +38,8 @@ t.test(before, after, alternative = "greater", var.equal = FALSE)
 var.test(before, after)
 t.test(before, after, mu = 0, alternative = "two.sided", var.equal = TRUE)
 ```
+
+![image](https://user-images.githubusercontent.com/80830860/170878493-eb17ef50-cd31-4367-9715-4f555eb38955.png)
 
 2a. Apakah Anda setuju dengan klaim tersebut?
 
